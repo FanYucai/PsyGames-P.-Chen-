@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contact</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<!--theme-style-->
+<link href="css/door1.css" rel="stylesheet" type="text/css" media="all" />	
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!---->
+<script src="js/bootstrap.min.js"></script>
+<script script type="text/javascript">
+var rc=50, tot=50, score=0;
+
+function myFunction() {
+	
+}
+
+function updateScore() {
+	var tmp = Math.floor(Math.random()*100);
+	var scoreAdd = 0;
+	if(tmp<50) {
+		scoreAdd = 3;
+	} else if(tmp<72) {
+		scoreAdd = 2.5;
+	} else if(tmp<94) {
+		scoreAdd = 3.5;
+	} else if(tmp<97) {
+		scoreAdd = 4;
+	} else {
+		scoreAdd = 5;
+	}
+	score += scoreAdd;
+	document.getElementById("scr").innerHTML="Total score:"+score;
+}
+
+function updateClick() {
+	document.getElementById("reclks").innerHTML="Remaining clicks:"+rc;
+	rc = rc-1;
+}
+</script>
+</head>
+
+<body>
+	<div class="header">
+				<h1 align="center" style="position: relative; top:40px; color:white">DOOR GAME</h1>
+				<br/><br/>
+				<div align="left" style="position:absolute; left: 300px; top:120px">
+					<h4 style="color:white">Score: void(0)</h4>
+				</div>
+				<div align="right" style="position:absolute; right: 300px; top:120px">
+<h4 id="reclks" style="color:white">Remaining clicks: void(0)</h4>
+					<h4 id="scr" style="color:white">Total clicks: 50</h4>
+				</div>		
+
+				<div class="haha" align="center">
+				<a href="index.html"><button style="position:relative; right: 60px; top:200px" type="button" class="btn btn-lg btn-info">BACK</button></a>
+				<a href="#"><button style="position:relative; left: 60px; top:200px" type="button" class="btn btn-lg btn-info" onclick="alert('Hey, you stayed and this score is for you.')">STAY</button></a>
+				</div>
+					
+	</div>		
+
+</body>
+</html>
