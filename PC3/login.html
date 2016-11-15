@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Secretary Hiring Game</title>
+	<link rel="stylesheet" type="text/css" href="style/register-login.css">
+	<script src='js/jquery.min.js' type="text/javascript"></script>
+	<script type="text/javascript">
+/*在函数的外部只能声明一些变量之类的，不能用操作方法，因为没有函数去调用执行它。*/ 
+	var arrtd = new Array(); 
+	var arrinp = new Array(); 
+	var chAbsScore = new Array();
+	var chAbsRank = new Array();
+	var finalRank = 0;
+	var reRank = new Array();
+	var realRank = new Array();
+	
+	var num=1;
+	var rank=0;
+	//在载入页面的时候就在表格头放入选择框，因为是一次性的 
+	window.onload = function(){ 
+	var tab = document.getElementById('tab'); 
+	var firsttr = document.getElementsByTagName('tr')[0]; 
+	var childtd = firsttr.childNodes; 
+	//在第一行第一列上加入选择框 
+	var inp = document.createElement('input'); 
+	inp.type = 'checkbox'; 
+	
+	//DOM Leve 2 事件注册 
+	catchEvent(inp,'click',function(){ //注册函数 不同状态进行判断 
+	if(inp.checked ==true){ 
+	allSelect(); 
+	}else{ 
+	cancelSelect(); 
+	} 
+	});  
+	childtd[0].appendChild(inp); 
+	} 
+	
+	var qwq = "";
+	for(var i=0; i<30; i++) {
+		chAbsScore[i] = Math.random()*1000;
+	}
+
+	var temp;
+	for(var i=0; i<30; i++) {
+		realRank[i] = i;
+	}
+	
+	for(var i=0; i<30; i++) {
+		for(var j=i+1; j<30; j++) {
+			var ri = realRank[i];
+			var rj = realRank[j];
+			if(chAbsScore[ri] < chAbsScore[rj]) {
+				temp = realRank[i];
+				realRank[i] = realRank[j];
+				realRank[j] = temp;
+			}
+		}
+	}
+	for(var i=0; i<30; i++) {
+		qwq += i+": "+realRank[i];
+	}
+	
+	function addRow(){ 
+		num++;
+		if(num > 30) {
+			alert("There's no more applicant, you must hire this one!");
+			num--;
+			return false;
+		}
+		x=document.getElementById("alNum")  //查找元素
+		x.innerHTML=num; 
+		x=document.getElementById("reNum") 
+		x.innerHTML=30-num; 
+
+		var tab = document.getElementById('tab'); 
+		var firsttr = document.getElementsByTagName('tr')[0]; 
+		var childtd = firsttr.childNodes; 
+		var tr = document.createElement('tr'); 
+		
+		var tmp;
+		for(var i=0; i<30; i++) {
+			reRank[i] = i; //No. reRank is person i+1
+		}
+		
+		//change reRank by absScore
+		for(var i=0; i<num; i++) {
+			for(var j=i+1; j<num; j++) {
+				var ri = reRank[i];
+				var rj = reRank[j];
+				if(chAbsScore[ri] < chAbsScore[rj]) {
+					tmp = reRank[i];
+					reRank[i] = reRank[j];
+					reRank[j] = tmp;
+				}
+			}
+		}
+		
+		x=document.getElementById("fiNum") 
+		x.innerHTML="Applicant: No." + num; 
+		
+		for(var i=0; i<num; i++) {
+			if(reRank[i] == num-1) {
+				rank = i+1;
+				x=document.getElementById("fiRank") 
+				x.innerHTML="Relative Rank: " + rank;
+				break; 
+			}
+		}
+		
+		for(var i=0;i<2;i++) {  
+			arrtd[i] = document.createElement('td'); 
+			if(i==1)
+				arrtd[i].id = "fiInList"+num;
+			
+			arrinp[i] = document.createElement('input');  
+			if(i==0) {
+				arrinp[i] = document.createTextNode(num); 
+				
+			} else {
+				arrinp[i] = document.createTextNode(rank); 
+			}
+			
+			arrtd[i].appendChild(arrinp[i]);
+			tr.appendChild(arrtd[i]); 
+		} 
+		tab.appendChild(tr);
+		
+
+		for(var i=0; i<num; i++) {
+			x=document.getElementById("fiInList"+(reRank[i]+1))  //查找元素
+//			alert("before:"+x.innerHTML+", after:"+(i+1));
+			x.innerHTML=i+1; 	
+		}
+  
+	} 
+	
+	function endGame(){ 
+//		alert("hahaha");
+
+		var qweqwe = 0;
+		for(var i=0; i<30; i++) {
+			if(realRank[i] == num-1) {
+				qweqwe = i+1;
+				break;
+			}
+		}
+		x=document.getElementById("fiNum")  //查找元素
+		x.innerHTML="Final: No." + num; 
+		x=document.getElementById("fiRank")  //查找元素
+		x.innerHTML="Final Rank: " + qweqwe; 
+		x=document.getElementById("asdf")  //查找元素
+		x.innerHTML='<h1 align="center">GAME OVER</h1>'; 
+		
+		for(var k=num+1; k<=30; k++) {
+			var tab = document.getElementById('tab'); 
+			var tr = document.createElement('tr'); 
+			for(var i=0;i<2;i++) {  
+				arrtd[i] = document.createElement('td'); 
+				if(i==1)
+					arrtd[i].id = "fiInList"+k;
+				
+				arrinp[i] = document.createElement('input');  
+				if(i==0) {
+					arrinp[i] = document.createTextNode(k); 
+					
+				} else {
+					arrinp[i] = document.createTextNode(k); 
+				}
+				
+				arrtd[i].appendChild(arrinp[i]);
+				tr.appendChild(arrtd[i]); 
+			} 
+			tab.appendChild(tr);
+		}
+
+		
+		for(var j=1; j<=30; j++) {
+			var qweqwe = 0;
+			for(var i=0; i<30; i++) {
+				if(realRank[i] == j-1) {
+					qweqwe = i+1;
+					break;
+				}
+			}
+			x=document.getElementById("fiInList"+j)  //查找元素
+			x.innerHTML=qweqwe; 	
+		}
+		
+	}
+	
+	//事件注册函数 
+	function catchEvent(eventobj,event,eventHandler){ 
+		if(eventobj.addEventListener){ 
+		eventobj.addEventListener(event,eventHandler,false); 
+		}else if(eventobj.attachEvent){ 
+		event = 'on'+event; 
+		eventobj.attachEvent(event,eventHandler); 
+		} 
+	} 
+
+	//catchEvent(add,'click',addRow); 
+	</script>
+</head>
+
+<body>
+<div id="box">
+	<table id="tab" align="right">
+		<tr>
+			<td>Interviewed Applicants</td>
+			<td id="alNum">0</td>
+		</tr>
+		<tr>
+			<td>Remaining Applicants</td>
+			<td id="reNum">30</td>
+		</tr>
+		<tr>
+			<td colspan="2">Relative Ranking</td>
+		</tr>
+		<tr>
+			<td>Applicant No.</td>
+			<td>Rank</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td id="fiInList1">1</td>
+		</tr>
+
+	</table>
+	<h1 align="center" style="position:relative; left: 170px; top: 40px">Secretary Hiring Game</h1>
+</div> 
+
+<div class="cent-box">
+	<div class="cent-box-header" id="qwerty">
+		<h4 class="main-title" style="color:white"><br/><br/><br/><br/><br/><br/>
+			<p id="fiNum">Applicant: No.1</p>
+			<p id="fiRank">Relative Rank: 1</p></h4>
+	</div>
+
+		<div class="button" id="asdf">
+			<br/>
+			<h3 align="center" class="sub-title">Would you hire him or not?</h3>
+			<br/>
+			&nbsp;<button type="submit" class="login-btn register-btn" id="button" onclick="endGame()">HIRE</button>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<button type="submit" class="login-btn register-btn" id="button" onclick="addRow()">NEXT</button>
+		</div>
+</div>
+
+<div class="footer">
+	<p><h1></h1></p>
+</div>
+
+<script src='js/particles.js' type="text/javascript"></script>
+<script src='js/background.js' type="text/javascript"></script>
+<script src='js/layer/layer.js' type="text/javascript"></script>
+<script src='js/index.js' type="text/javascript"></script>
+</body>
+</html>

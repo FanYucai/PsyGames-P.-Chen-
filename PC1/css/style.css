@@ -2226,7 +2226,8 @@ ul.con-icons li {
     bottom: -63%;
 }
 .modal-body {
-    padding: 1em;
+/*	background: url(../images/fi1.jpg) no-repeat;*/
+    padding: 3em;
 }
 div#bs-example-navbar-collapse-1 {
     width: 90.2%;

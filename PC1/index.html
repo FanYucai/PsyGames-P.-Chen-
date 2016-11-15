@@ -19,10 +19,8 @@
 
 <script script type="text/javascript">
 var rc=50, tot=50, score=0;
+var flag = 1;
 
-function myFunction() {
-	
-}
 function foo(){ 
 	//document.forms[0].hid.value = str; 
   
@@ -31,7 +29,8 @@ function foo(){
 	return true; 
  }
 
-function updateScore() {
+function updateScore_door1() {
+	updateClick();
 	var tmp = Math.floor(Math.random()*100);
 	var scoreAdd = 0;
 	if(tmp<50) {
@@ -46,47 +45,104 @@ function updateScore() {
 		scoreAdd = 5;
 	}
 	score += scoreAdd;
-	document.getElementById("scr").innerHTML="Total score:"+score;
+	if(flag == 0) {
+		score -= scoreAdd;
+	}
+	a = document.getElementsByName("scr");
+	for(var i=0; i<a.length; i++) {
+		a[i].innerHTML="Total score:"+score;
+	}
+}
+function updateScore_door2() {
+	updateClick();
+	var tmp = Math.floor(Math.random()*100);
+	var scoreAdd = 0;
+	if(tmp<50) {
+		scoreAdd = 3;
+	} else if(tmp<72) {
+		scoreAdd = 2;
+	} else if(tmp<94) {
+		scoreAdd = 4;
+	} else if(tmp<97) {
+		scoreAdd = 5;
+	} else {
+		scoreAdd = 6;
+	}
+	score += scoreAdd;
+	if(flag == 0) {
+		score -= scoreAdd;
+	}
+	a = document.getElementsByName("scr");
+	for(var i=0; i<a.length; i++) {
+		a[i].innerHTML="Total score:"+score;
+	}
+
+//	document.getElementById("scr").innerHTML="Total score:"+score;
+}
+function updateScore_door3() {
+	//	document.getElementById("scr").innerHTML="Total score:"+score;
+		updateClick();
+		var tmp = Math.floor(Math.random()*100);
+		var scoreAdd = 0;
+		if(tmp<50) {
+			scoreAdd = 3;
+		} else if(tmp<72) {
+			scoreAdd = 1.5;
+		} else if(tmp<94) {
+			scoreAdd = 4.5;
+		} else if(tmp<97) {
+			scoreAdd = 6;
+		} else {
+			scoreAdd = 7;
+		}
+		score += scoreAdd;
+		if(flag == 0) {
+			score -= scoreAdd;
+		}
+		a = document.getElementsByName("scr");
+		for(var i=0; i<a.length; i++) {
+			a[i].innerHTML="Total score:"+score;
+		}
+
+
 }
 
 function updateClick() {
-	document.getElementById("reclks").innerHTML="Remaining clicks:"+rc;
-	rc = rc-1;
+	if(rc <= 0) {
+		alert("GAME OVER! How much score did you get?");
+		flag=0;
+	}	
+	if(flag==1) {
+		rc -= 1;
+		a = document.getElementsByName("reclks");
+		for(var i=0; i<a.length; i++) {
+			a[i].innerHTML="Remaining clicks: "+rc;
+		}
+	}
+
+//	document.getElementById("reclks").innerHTML="Remaining clicks:"+rc;
+
 }
 </script>
 </head>
 
 <body>
-<button onclick="myFunction()">HHHHHH</button>
-<!-- <div class="header"> -->
-<!-- <div class="container"> -->
-<!-- 	<div class="head-top"> -->
-<!-- 		<div class="login"> -->
-<!-- 			<ul class="nav-login" align="center"> -->
-<!-- 				<li><a href="#" data-toggle="modal" data-target="#myModal1">Login</a></li> -->
-<!-- 				<li><a href="#" data-toggle="modal" data-target="#myModal2">Signup</a></li> -->
-<!-- 			</ul> -->
-<!-- 		</div> -->
-<!-- 		<div class="clearfix"></div> -->
-<!-- 	</div> -->
-<!-- </div> -->
 
-<!-- <h1 align="center" style="position: relative; top:40px; color:white">DOOR GAME</h1> -->
-<!-- <br/><br/> -->
 <div align="left" style="position:absolute; left: 100px; top:180px">
-	<h4 style="color:white">Score: void(0)</h4>
+	<strong><h2 name="scr" style="color:white">Score: 0.0</h2></strong>
 </div>
 <div align="right" style="position:absolute; right: 60px; top:180px">
 
-<h4 id="reclks" style="color:white">Remaining clicks: void(0)</h4>
-	<h4 id="scr" style="color:white">Total clicks: 50</h4>
+<h2 name="reclks" style="color:white">Remaining clicks: 50</h2>
+	<strong><h2 style="color:white">Total clicks: 50</h2></strong>
 </div>	
 
 	<div class="content">
 	<div class="container">
 	<div class="test">
 		<div class="container">
-		<h1 align="center" style="color:white">DOOR GAME</h1>
+		<strong><h1 id="gougou" align="center" style="color:white">DOOR GAME</h1></strong>
+		
 		<br/><br/><br/><br/><br/><br/><br/><br/><br/>
 			<div  class=" test-grid-1" >
 			
@@ -94,7 +150,7 @@ function updateClick() {
 	<div class="col-md-4 content-mid-1">
 		<div class="port effect-1">
 <!-- 			<a href="door1.html"> -->
-				<a href="#" data-toggle="modal" data-target="#myModal1">
+				<a href="#" data-toggle="modal" data-target="#myModal1" onclick="updateClick()">
 				<div class="image-box">
 					<img src="images/1.jpg" alt="" class="img-responsive">
 				</div>
@@ -113,20 +169,20 @@ function updateClick() {
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>						
 				</div>
 				<div>
-						<img src="images/fi1.jpg"></img>
-								<h1 align="center" style="position: relative; top:40px; color:white">DOOR GAME</h1>
+						<h2 align="center" style="position: relative;">You are in door #1</h2>
+						<br />
 								<br/><br/>
-								<div align="left" style="position:absolute; left: 300px; top:120px">
-									<h4 style="color:white">Score: void(0)</h4>
+								<div align="left" style="position:absolute; left: 30px; top:80px">
+									<h4 name="scr" id="scr">Score: 0.0</h4>
 								</div>
-								<div align="right" style="position:absolute; right: 300px; top:120px">
-				<h4 id="reclks" style="color:white">Remaining clicks: void(0)</h4>
-									<h4 id="scr" style="color:white">Total clicks: 50</h4>
+								<div align="right" style="position:absolute; right: 30px; top:80px">
+									<h4 name="reclks" id="reclks">Remaining clicks: 50</h4>
+									<h4>Total clicks: 50</h4>
 								</div>		
-
+								<img align="center" src="images/fi1.jpg"></img>
 								<div class="haha" align="center">
-								<a href="index.html"><button style="position:relative; right: 60px; top:200px" type="button" class="btn btn-lg btn-info">BACK</button></a>
-								<a href="#"><button style="position:relative; left: 60px; top:200px" type="button" class="btn btn-lg btn-info" onclick="alert('Hey, you stayed and this score is for you.')">STAY</button></a>
+								<a href="index.html"><button style="position:fixed; right: 60px; top:400px" type="button" class="btn btn-lg btn-info" data-dismiss="modal" aria-label="Close" onclick="updateClick()">BACK</button></a>
+								<a href="#"><button style="position:fixed; left: 60px; top:400px" type="button" class="btn btn-lg btn-info" onclick="updateScore_door1()">STAY</button></a>
 								</div>
 									
 				</div>		
@@ -137,7 +193,7 @@ function updateClick() {
 
 	<div class="col-md-4 content-mid-1">
 		<div class="port effect-1">
-			<a href="door2.html">
+			<a href="#" data-toggle="modal" data-target="#myModal2"  onclick="updateClick()">
 			<div class="image-box">
 				<img src="images/2.jpg" alt="" class="img-responsive">
 			</div>
@@ -155,26 +211,24 @@ function updateClick() {
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>						
 				</div>
-				<div class="modal-body modal-spa">
-					<div class="login-grids">
-					
-							<div class="login-right">
-								<form action="#" method="post">
-									<h3>Signin with your account </h3>
-									<input type="text" value="Enter your mobile number or Email" name=" Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your mobile number or Email';}" required="">	
-									<input type="password" value="Password" name="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">	
-									<h4><a href="#">Forgot password</a> / <a href="#">Create new password</a></h4>
-									<div class="single-bottom">
-										<input type="checkbox"  id="brand" value="">
-										<label for="brand"><span></span>Remember Me.</label>
-									</div>
-									<input type="submit" value="SIGNIN" >
-								</form>
-							</div>
-							
-						<p>By logging in you agree to our <span>Terms and Conditions</span> and <span>Privacy Policy</span></p>
-					</div>
-				</div>
+				<div>
+						<h2 align="center" style="position: relative;">You are in door #2</h2>
+						<br />
+								<br/><br/>
+								<div align="left" style="position:absolute; left: 30px; top:80px">
+									<h4 name="scr">Score: 0.0</h4>
+								</div>
+								<div align="right" style="position:absolute; right: 30px; top:80px">
+									<h4 name="reclks">Remaining clicks: 50</h4>
+									<h4>Total clicks: 50</h4>
+								</div>		
+								<img align="center" src="images/fi2.jpg"></img>
+								<div class="haha" align="center">
+								<a href="index.html"><button style="position:fixed; right: 60px; top:400px" type="button" class="btn btn-lg btn-info"  class="btn btn-lg btn-info" data-dismiss="modal" aria-label="Close" onclick="updateClick()">BACK</button></a>
+								<a href="#"><button style="position:fixed; left: 60px; top:400px" type="button" class="btn btn-lg btn-info"  onclick="updateScore_door2()">STAY</button></a>
+								</div>
+									
+				</div>		
 			</div>
 		</div>
 	</div>
@@ -183,7 +237,7 @@ function updateClick() {
 
 	<div class="col-md-4 content-mid-1">
 		<div class="port effect-1">
-			<a href="door3.html">
+			<a href="#" data-toggle="modal" data-target="#myModal3" onclick="updateClick()">
 			<div class="image-box">
 				<img src="images/3.jpg" alt="" class="img-responsive">
 			</div>
@@ -201,30 +255,28 @@ function updateClick() {
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>						
 				</div>
-				<div class="modal-body modal-spa">
-					<div class="login-grids">
-					
-							<div class="login-right">
-								<form action="#" method="post">
-									<h3>Signin with your account </h3>
-									<input type="text" value="Enter your mobile number or Email" name=" Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your mobile number or Email';}" required="">	
-									<input type="password" value="Password" name="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">	
-									<h4><a href="#">Forgot password</a> / <a href="#">Create new password</a></h4>
-									<div class="single-bottom">
-										<input type="checkbox"  id="brand" value="">
-										<label for="brand"><span></span>Remember Me.</label>
-									</div>
-									<input type="submit" value="SIGNIN" >
-								</form>
-							</div>
-							
-						<p>By logging in you agree to our <span>Terms and Conditions</span> and <span>Privacy Policy</span></p>
-					</div>
-				</div>
+				<div>
+						<h2 align="center" style="position: relative;">You are in door #3</h2>
+						<br />
+								<br/><br/>
+								<div align="left" style="position:absolute; left: 30px; top:80px">
+									<h4 name="scr">Score: 0.0</h4>
+								</div>
+								<div align="right" style="position:absolute; right: 30px; top:80px">
+									<h4 name="reclks">Remaining clicks: 50</h4>
+									<h4>Total clicks: 50</h4>
+								</div>		
+								<img align="center" src="images/fi3.jpg"></img>
+								<div class="haha" align="center">
+								<a href="index.html"><button style="position:fixed; right: 60px; top:400px" type="button" class="btn btn-lg btn-info"  class="btn btn-lg btn-info" data-dismiss="modal" aria-label="Close" onclick="updateClick()">BACK</button></a>
+								<a href="#"><button style="position:fixed; left: 60px; top:400px" type="button" class="btn btn-lg btn-info" onclick="updateScore_door3()">STAY</button></a>
+								</div>
+									
+				</div>		
 			</div>
 		</div>
 	</div>
-	<!-- //login -->
+		<!-- //login -->
 	
 					<div class="clearfix"></div>
 					</div>
@@ -303,7 +355,7 @@ function updateClick() {
 <div class="footer">
 	<div class="container">
 		<div class="col-md-6 footer-right">
-			<p class="copy-right" align="center"><a href="http://www.github.com/FanYucai">Copyright &copy; 2016.Company name All rights reserved.</a></p>
+			<p class="copy-right" align="center"><a href="http://www.github.com/FanYucai">Copyright &copy; 2016.N0e1 All rights reserved.</a></p>
 		</div>
 		<div class="clearfix"></div>
 	</div>
