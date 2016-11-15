@@ -89,11 +89,12 @@ function updateClick() {
 		<h1 align="center" style="color:white">DOOR GAME</h1>
 		<br/><br/><br/><br/><br/><br/><br/><br/><br/>
 			<div  class=" test-grid-1" >
-				
+			
 				
 	<div class="col-md-4 content-mid-1">
 		<div class="port effect-1">
-			<a href="door1.html">
+<!-- 			<a href="door1.html"> -->
+				<a href="#" data-toggle="modal" data-target="#myModal1">
 				<div class="image-box">
 					<img src="images/1.jpg" alt="" class="img-responsive">
 				</div>
@@ -104,7 +105,35 @@ function updateClick() {
 			</a>
 		</div>
 	</div>
+	<!-- login -->
+	<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content modal-info">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>						
+				</div>
+				<div>
+						<img src="images/fi1.jpg"></img>
+								<h1 align="center" style="position: relative; top:40px; color:white">DOOR GAME</h1>
+								<br/><br/>
+								<div align="left" style="position:absolute; left: 300px; top:120px">
+									<h4 style="color:white">Score: void(0)</h4>
+								</div>
+								<div align="right" style="position:absolute; right: 300px; top:120px">
+				<h4 id="reclks" style="color:white">Remaining clicks: void(0)</h4>
+									<h4 id="scr" style="color:white">Total clicks: 50</h4>
+								</div>		
 
+								<div class="haha" align="center">
+								<a href="index.html"><button style="position:relative; right: 60px; top:200px" type="button" class="btn btn-lg btn-info">BACK</button></a>
+								<a href="#"><button style="position:relative; left: 60px; top:200px" type="button" class="btn btn-lg btn-info" onclick="alert('Hey, you stayed and this score is for you.')">STAY</button></a>
+								</div>
+									
+				</div>		
+			</div>
+		</div>
+	</div>
+	<!-- //login -->
 
 	<div class="col-md-4 content-mid-1">
 		<div class="port effect-1">
@@ -119,6 +148,37 @@ function updateClick() {
 			</a>
 		</div>
 	</div>
+<!-- login -->
+	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content modal-info">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>						
+				</div>
+				<div class="modal-body modal-spa">
+					<div class="login-grids">
+					
+							<div class="login-right">
+								<form action="#" method="post">
+									<h3>Signin with your account </h3>
+									<input type="text" value="Enter your mobile number or Email" name=" Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your mobile number or Email';}" required="">	
+									<input type="password" value="Password" name="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">	
+									<h4><a href="#">Forgot password</a> / <a href="#">Create new password</a></h4>
+									<div class="single-bottom">
+										<input type="checkbox"  id="brand" value="">
+										<label for="brand"><span></span>Remember Me.</label>
+									</div>
+									<input type="submit" value="SIGNIN" >
+								</form>
+							</div>
+							
+						<p>By logging in you agree to our <span>Terms and Conditions</span> and <span>Privacy Policy</span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //login -->
 
 
 	<div class="col-md-4 content-mid-1">
@@ -134,7 +194,37 @@ function updateClick() {
 			</a>
 		</div>
 	</div>	
-	
+<!-- login -->
+	<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content modal-info">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>						
+				</div>
+				<div class="modal-body modal-spa">
+					<div class="login-grids">
+					
+							<div class="login-right">
+								<form action="#" method="post">
+									<h3>Signin with your account </h3>
+									<input type="text" value="Enter your mobile number or Email" name=" Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your mobile number or Email';}" required="">	
+									<input type="password" value="Password" name="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}" required="">	
+									<h4><a href="#">Forgot password</a> / <a href="#">Create new password</a></h4>
+									<div class="single-bottom">
+										<input type="checkbox"  id="brand" value="">
+										<label for="brand"><span></span>Remember Me.</label>
+									</div>
+									<input type="submit" value="SIGNIN" >
+								</form>
+							</div>
+							
+						<p>By logging in you agree to our <span>Terms and Conditions</span> and <span>Privacy Policy</span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //login -->
 	
 					<div class="clearfix"></div>
 					</div>
