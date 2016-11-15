@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Choosing Girlfriend</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<!--theme-style-->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); 
+var mod = 1;
+} 
+var tot = 6;
+function setMode(i) {
+	var x;
+	mod = i;
+		
+	alert("Now you are in mode #"+mod);
+	if(mod == 2) {
+		x = document.getElementById("q1")  //查找元素
+		x.innerHTML='<button class="btn btn-lg btn-danger" onclick="show(1,0)"><h6>Victoria6</h6></button><button class="btn btn-lg btn-danger" onclick="chose(1)"><h6>Choose</h6></button><button class="btn btn-lg btn-danger" onclick="c(1)"><h6>Reconsider</h6></button>'; 
+		x = document.getElementById("q2")  //查找元素
+		x.innerHTML='<button class="btn btn-lg btn-danger" onclick="show(2,0)"><h6>Victoria6</h6></button>		<button class="btn btn-lg btn-danger" onclick="chose(2)"><h6>Choose</h6></button><button class="btn btn-lg btn-danger" onclick="c(2)"><h6>Reconsider</h6></button>'; 
+		x = document.getElementById("q3")  //查找元素
+		x.innerHTML='<button class="btn btn-lg btn-danger" onclick="show(3,0)"><h6>Victoria6</h6></button>		<button class="btn btn-lg btn-danger" onclick="chose(3)"><h6>Choose</h6></button><button class="btn btn-lg btn-danger" onclick="c(3)"><h6>Reconsider</h6></button>'; 
+		x = document.getElementById("q4")  //查找元素
+		x.innerHTML='<button class="btn btn-lg btn-danger" onclick="show(4,0)"><h6>Victoria6</h6></button>		<button class="btn btn-lg btn-danger" onclick="chose(4)"><h6>Choose</h6></button><button class="btn btn-lg btn-danger" onclick="c(4)"><h6>Reconsider</h6></button>'; 
+		x = document.getElementById("q5")  //查找元素
+		x.innerHTML='<button class="btn btn-lg btn-danger" onclick="show(5,0)"><h6>Victoria6</h6></button>		<button class="btn btn-lg btn-danger" onclick="chose(5)"><h6>Choose</h6></button><button class="btn btn-lg btn-danger" onclick="c(5)"><h6>Reconsider</h6></button>'; 
+		x = document.getElementById("q6")  //查找元素
+		x.innerHTML='<button class="btn btn-lg btn-danger" onclick="show(6,0)"><h6>Victoria6</h6></button>		<button class="btn btn-lg btn-danger" onclick="chose(6)"><h6>Choose</h6></button><button class="btn btn-lg btn-danger" onclick="c(6)"><h6>Reconsider</h6></button>'; 
+		x = document.getElementById("hehe")  //查找元素
+		x.innerHTML='';
+
+	} else {
+		x = document.getElementById("hehe")  //查找元素
+		x.innerHTML='<li><a style="color:black" href="#" data-toggle="modal" onclick="aha()">The next day you can know one more feature of these girls.</a></li>';
+
+	}
+	
+}
+
+function aha() {
+	turn++;
+	if(turn <= 2) {
+		alert("Day No." + (turn+1) + ", what a nice day boy, date these girls!");
+	} else {
+		alert("No more days and no more dates, you must make a decision right now!");
+		turn = 2;
+	}
+}
+function c(i) {
+	if(tot == 1) {
+		alert("You must choose her, it's destined..( ´ ▽ ` )ﾉ");
+		x = document.getElementById("q"+i)  //查找元素
+		x.innerHTML='<button class="btn btn-lg btn-danger" onclick="show(1,0)"><h6>Victoria6</h6></button>';
+		chose(i);
+	} else {
+		alert("Oh god! You just missed this nice girl! (￣^￣)ゞ");
+		x = document.getElementById("q"+i)  //查找元素
+		x.innerHTML='<button class="btn btn-lg btn-danger" onclick="show(1,0)"><h6>Victoria6</h6></button>';
+
+ 		tot--;
+	}
+
+}
+//Girl No.1: tall; knowledgeable; fat
+//Girl No.2: beautiful; wise; extremely bad temper
+//Girl No.3: kind; understanding; cooks well
+//Girl No.4: charming; mean; rude
+//Girl No.5: positive; outgoing; ugly
+//Girl No.6: shy; quiet; sincere
+var g;
+var turn = 0;
+function show(i, j) {
+	
+	var g1 = new Array();
+	var g2 = new Array();
+	var g3 = new Array();
+	var g4 = new Array();
+	var g5 = new Array();
+	var g6 = new Array();
+
+	g1[0] = "tall";
+	g1[1] = "knowledgeable";
+	g1[2] = "fat";
+
+	g2[0] = "beautiful";
+	g2[1] = "wise";
+	g2[2] = "extremely bad temper";
+
+	g3[0] = "kind";
+	g3[1] = "understanding";
+	g3[2] = "cooks well";
+
+	g4[0] = "charming";
+	g4[1] = "mean";
+	g4[2] = "rude";
+
+	g5[0] = "positive";
+	g5[1] = "outgoing";
+	g5[2] = "ugly";
+
+	g6[0] = "shy";
+	g6[1] = "quiet";
+	g6[2] = "sincere";
+
+	//left
+	gd1 = 3;
+	gd2 = 3;
+	gd3 = 3;
+	gd4 = 3;
+	gd5 = 3;
+	gd6 = 3;
+	
+	var gd = 0;
+//	alert("haha"+i+j);
+	if(j == 0) {
+		if(i == 1) {
+			g = g1;
+		}else if(i==2) {
+			g = g2;	
+		}else if(i==3) {
+			g = g3;
+		}else if(i==4) {
+			g = g4;
+		}else if(i==5) {
+			g = g5;	
+		}else if(i==6) {
+			g = g6;
+		}
+		alert("Girl No." + i + " is: " + g1[0]+", "+g1[1]+", and "+g1[2]+", would you choose her as your girlfriend?");
+	} else if(j==1) {
+		if(i==1) {
+			g = g1;
+
+		}else if(i==2) {
+			g = g2;	
+			
+		}else if(i==3) {
+			g = g3;
+		}else if(i==4) {
+			g = g4;
+		}else if(i==5) {
+			g = g5;	
+		}else if(i==6) {
+			g = g6;
+		}
+		alert("Girl No." + i + " is: " + g[turn]);
+	}
+}
+
+function chose(i) {
+	alert("\nYou've chose girl No."+i+"\n");
+	alert("\nGirl No.1: tall; knowledgeable; fat\n\nGirl No.2: beautiful; wise; extremely bad temper	\n\nGirl No.3: kind; understanding; cooks well	\n\nGirl No.4: charming; mean; rude	\n\nGirl No.5: positive; outgoing; ugly	\n\nGirl No.6: shy; quiet; sincere\n");
+}
+</script>
+<!---->
+<script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+<!-- about -->
+
+<div class="container">
+	<div class="head-top">
+		<div class="login">
+			<ul id="hehe" class="nav-login">
+				<li ><a style="color:black" href="#" data-toggle="modal" onclick="setMode(1)">Mode1</a></li>
+				<li ><a style="color:black" href="#" data-toggle="modal" onclick="setMode(2)">Mode2</a></li>
+			</ul>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+
+<div class="team">
+	<div class="container">
+		<h3 >Options</h3>
+		<div class="col-md-4 bottom-grid ">
+			<div class="btm-right">
+				<img src="images/tt1.jpg" alt=" ">
+					<div class="captn">
+						<div  id="q1" class="captn1">
+							<button class="btn btn-lg btn-danger" onclick="show(1,1)"><h6>Victoria1</h6></button>
+							<button class="btn btn-lg btn-danger" onclick="chose(1)"><h6>Choose</h6></button>		
+						</div>
+					</div>
+			</div>
+		</div>
+		<div class="col-md-4 bottom-grid ">
+			<div class="btm-right">
+				<img src="images/tt2.jpg" alt=" ">
+					<div class="captn">
+						<div  id="q2" class="captn1">
+							<button class="btn btn-lg btn-danger" onclick="show(2,1)"><h6>Victoria2</h6></button>
+							<button class="btn btn-lg btn-danger" onclick="chose(2)"><h6>Choose</h6></button>
+						</div>
+					</div>
+			</div>
+		</div>
+		<div class="col-md-4 bottom-grid ">
+			<div class="btm-right">
+				<img src="images/tt3.jpg" alt=" ">
+					<div id="q3" class="captn">
+						<div class="captn1">
+							<button class="btn btn-lg btn-danger" onclick="show(3,1)"><h6>Victoria3</h6></button>	
+							<button class="btn btn-lg btn-danger" onclick="chose(3)"><h6>Choose</h6></button>
+						</div>
+					</div>
+			</div>
+		</div>
+		<div class="col-md-4 bottom-grid ">
+			<div class="btm-right">
+				<img src="images/tt4.jpg" alt=" ">
+					<div class="captn">
+						<div id="q4" class="captn1">
+							<button class="btn btn-lg btn-danger" onclick="show(4,1)"><h6>Victoria4</h6></button>
+							<button class="btn btn-lg btn-danger" onclick="chose(4)"><h6>Choose</h6></button>						
+							
+						</div>
+					</div>
+			</div>
+		</div>
+
+		<div class="col-md-4 bottom-grid ">
+			<div class="btm-right">
+				<img src="images/tt4.jpg" alt=" ">
+					<div class="captn">
+						<div id="q5" class="captn1">
+							<button class="btn btn-lg btn-danger" onclick="show(5,1)"><h6>Victoria5</h6></button>	
+							<button class="btn btn-lg btn-danger" onclick="chose(5)"><h6>Choose</h6></button>
+						</div>
+					</div>
+			</div>
+		</div>
+		
+		<div class="col-md-4 bottom-grid ">
+			<div class="btm-right">
+				<img src="images/tt4.jpg" alt=" ">
+					<div class="captn">
+						<div id="q6" class="captn1">
+							<button class="btn btn-lg btn-danger" onclick="show(6,1)"><h6>Victoria6</h6></button>
+							<button class="btn btn-lg btn-danger" onclick="chose(6)"><h6>Choose</h6></button>
+						</div>
+					</div>
+			</div>
+		</div>
+				
+		<div class="clearfix"></div>
+	</div>
+</div>	
+
+
+</body>
+</html>
